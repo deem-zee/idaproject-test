@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div>
+    <div id="productList">
+      
+    </div>
+  </div>
 </template>
 
 <script>

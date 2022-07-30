@@ -1,18 +1,23 @@
 <template>
   <div id="app">
     <add-product></add-product>
-    <router-view/>
+    <product-list></product-list>
   </div>
 </template>
 
 <script>
-import  AddProduct  from './views/AddProduct.vue'
+import  AddProduct  from './components/AddProduct.vue'
+import ProductList from './components/ProductList.vue'
 
 export default {
   name: 'App',
   components: {
     'add-product': AddProduct,
-  }
+    'product-list':ProductList
+  },
+  beforeCreate() {
+		this.$store.commit('initialiseStore');
+	}
 }
 </script>
 
@@ -25,6 +30,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   background: rgba(255, 254, 251, 0.8);
+  display: grid;
+  grid-auto-columns: 1fr, 3fr;
 }
 
 nav {
@@ -38,5 +45,7 @@ nav {
       color: #42b983;
     }
   }
+  
+
 }
 </style>

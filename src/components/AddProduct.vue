@@ -1,27 +1,55 @@
 export <template>
   <div id="addProduct__container">
     <p id="addProduct__container__header">Добавление товара</p>
-    <form action="" id="addProduct__container__form">
+    <form id="addProduct__container__form">
             <label for="productName">Наименование товара</label>
             <div  class="requiredCircle"></div>
-            <input type="text" name="productName" id="productName" placeholder="Введите наименование товара" required>
+            <input type="text" v-model="product.naming" name="productName" id="productName" placeholder="Введите наименование товара" required>
             <label for="productDescription">Описание товара</label>
-            <div  class="requiredCircle"></div>
-            <input type="textarea" name="productDescription" id="productDescription" placeholder="Введите описание товара">
+            <input type="textarea" v-model="product.description" name="productDescription" id="productDescription" placeholder="Введите описание товара">
             <label for="productImageLink">Ссылка на изображение товара</label>
-            <input type="textarea" name="productImageLink" id="productImageLink" placeholder="Введите ссылку" required>
+            <div  class="requiredCircle"></div>
+            <input type="textarea" v-model="product.link" name="productImageLink" id="productImageLink" placeholder="Введите ссылку" required>
             <label for="productPrice">Цена товара</label>
             <div class="requiredCircle"></div>
-            <input type="text" name="productPrice" id="productPrice" placeholder="Введите цену" required>
-            <button id="addProduct__container__submit">Добавить товар</button>
+            <input type="text" v-model="product.price" @keyup="mask" name="productPrice" id="productPrice" placeholder="Введите цену" required>
+            <button id="addProduct__container__submit"  @click.prevent="addNewProduct(product)" :disabled="validate == false">Добавить товар</button>
     </form>
     
   </div>
 </template>
 
 <script>
-export default {
+import { mapActions, mapGetters } from "vuex";
 
+export default {
+    data() {
+        return {
+            product: {
+                naming: null,
+                description: null,
+                link: null,
+                price: null,
+                id: null
+            }
+            
+        }
+    },
+    computed: {
+        ...mapGetters(['getProducts']),
+        validate() {
+            return (this.product.naming && this.product.link && this.product.price) ? true :  false;
+        }
+    },
+    methods: {
+        ...mapActions(['addNewProduct']),
+        
+        mask(e) {
+            (this.product.price.indexOf('.') === -1 && e.which == 32) ?
+                this.product.price = this.product.price.trim() + '.' 
+                : this.product.price;  
+        }
+    }
 }
 </script>
 
@@ -54,7 +82,6 @@ html { font-family: 'Inter', sans-serif; }
         background: #FFFEFB;
         box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
         border-radius: 4px;
-
         label {
             position: absolute;
             height: 13px;
@@ -74,37 +101,39 @@ html { font-family: 'Inter', sans-serif; }
             color: #49485E;
 
         }
-        :nth-child(1) {
+        label:nth-of-type(1) {
             width: 95px;
             top: 107px;
         }
-        .requiredCircle:nth-child(1) {
+        
+        label:nth-of-type(2) {
+            width: 74px;
+            top: 176px;
+        }
+          label:nth-of-type(3) {
+            width: 134px;
+            top: 317px;
+        }
+        label:nth-of-type(4) {
+            width: 53px;
+            top: 386px;
+        }
+        .requiredCircle:nth-of-type(1) {
             position: absolute;
             width: 4px;
             height: 4px;
             left: 151px;
             top: 107px;
         }
-        :nth-child(4) {
-            width: 74px;
-            top: 176px;
-        }
-        .requiredCircle:nth-child(5) {
+        .requiredCircle:nth-of-type(2) {
             position: absolute;
             width: 4px;
             height: 4px;
             left: 190px;
             top: 317px;
         }
-        :nth-child(7) {
-            width: 134px;
-            top: 317px;
-        }
-        :nth-child(9) {
-            width: 53px;
-            top: 386px;
-        }
-        .requiredCircle:nth-child(10) {
+      
+        .requiredCircle:nth-of-type(3) {
             position: absolute;
             width: 4px;
             height: 4px;
@@ -182,6 +211,7 @@ html { font-family: 'Inter', sans-serif; }
                 left: 56px;
                 top: 463px;
                 background: #EEEEEE;
+                border: none;
                 border-radius: 10px;
                 font-family: 'Inter';
                 font-style: normal;
@@ -196,6 +226,9 @@ html { font-family: 'Inter', sans-serif; }
                 /* Greys / 500 */
 
                 color: #B4B4B4;
+                &:hover{
+                    cursor: pointer;
+                }
             }
 } 
 }
