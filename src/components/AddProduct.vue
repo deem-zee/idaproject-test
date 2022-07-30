@@ -13,14 +13,14 @@ export <template>
             <label for="productPrice">Цена товара</label>
             <div class="requiredCircle"></div>
             <input type="text" v-model="product.price" @keyup="mask" name="productPrice" id="productPrice" placeholder="Введите цену" required>
-            <button id="addProduct__container__submit"  @click.prevent="addNewProduct(product)" :disabled="validate == false">Добавить товар</button>
+            <button id="addProduct__container__submit"  @click.prevent="addProduct(product)" :disabled="validate == false">Добавить товар</button>
     </form>
     
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
     data() {
@@ -42,8 +42,18 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['addNewProduct']),
-        
+
+        addProduct(product) {
+           this.$store.dispatch('addNewProduct', product);
+           this.product = {
+                naming: null,
+                description: null,
+                link: null,
+                price: null,
+                id: null
+           }
+
+        },
         mask(e) {
             (this.product.price.indexOf('.') === -1 && e.which == 32) ?
                 this.product.price = this.product.price.trim() + '.' 
@@ -61,6 +71,8 @@ html { font-family: 'Inter', sans-serif; }
     background: #FFFEFB;
     box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
     border-radius: 4px;
+    width: 30%;
+    height: 440px;
 
     #addProduct__container__header {
         position: absolute;

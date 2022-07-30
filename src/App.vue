@@ -8,6 +8,8 @@
 <script>
 import  AddProduct  from './components/AddProduct.vue'
 import ProductList from './components/ProductList.vue'
+// eslint-disable-next-line no-unused-vars
+import store from './store/index';
 
 export default {
   name: 'App',
@@ -30,8 +32,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   background: rgba(255, 254, 251, 0.8);
-  display: grid;
-  grid-auto-columns: 1fr, 3fr;
+  display: flex;
+  flex-direction: row;
 }
 
 nav {
@@ -45,7 +47,7 @@ nav {
       color: #42b983;
     }
   }
-  
+
 
 }
 </style>

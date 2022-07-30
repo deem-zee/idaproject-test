@@ -19,6 +19,10 @@ export default new Vuex.Store({
       state.products.push(product);
       state.lastId += 1;
     },
+    deleteProductFromState(state, product) {
+      const index = state.products.indexOf(product);
+      state.products.splice(index, 1)
+    },
     initialiseStore(state) {
 			// Check if the products exists
 			if(localStorage.getItem('store')) {
@@ -32,6 +36,11 @@ export default new Vuex.Store({
   actions: {
     addNewProduct(context, product) {   
       context.commit('addToProducts', product)
+    },
+    deleteProduct(context, product) {
+      console.log(product)
+      const item = context.state.products.find(item => (item.id === product.id));
+      context.commit('deleteProductFromState', item)
     }
   },
   modules: {
