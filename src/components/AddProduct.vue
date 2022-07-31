@@ -6,7 +6,6 @@ export <template>
         <div  class="requiredCircle"></div>
         <input type="text" v-model="product.naming" name="productName" id="productName" placeholder="Введите наименование товара" required>
         <label for="productDescription">Описание товара</label>
-        <!-- <input type="textarea" v-model="product.description" name="productDescription" id="productDescription" placeholder="Введите описание товара"/> -->
         <textarea v-model="product.description" name="productDescription" id="productDescription" placeholder="Введите описание товара" cols="30" rows="10"></textarea>
         <label for="productImageLink">Ссылка на изображение товара</label>
         <div  class="requiredCircle"></div>
@@ -15,6 +14,7 @@ export <template>
         <div class="requiredCircle"></div>
         <input type="text" v-model="product.price" @keyup="mask" name="productPrice" id="productPrice" placeholder="Введите цену" required>
         <button id="addProduct__container__submit"  @click.prevent="addProduct(product)" :disabled="validate == false">Добавить товар</button>
+        <div class="success" :class="{successfullyAdded: succeed}"><div class="arrow"></div></div>
     </form> 
   </div>
 </template>
@@ -31,7 +31,8 @@ export default {
                 link: null,
                 price: null,
                 id: null
-            }
+            },
+            succeed: false,
             
         }
     },
@@ -52,6 +53,10 @@ export default {
                 price: null,
                 id: null
            }
+            this.succeed = true;
+            setTimeout(() => {
+                this.succeed = false;
+            }, 3000)
 
         },
         mask(e) {
@@ -176,5 +181,35 @@ export default {
         &:active {
             background: rgb(116, 245, 116);
         }
+    }
+
+    .success {
+        position: relative;
+        left: 320px;
+        top: -63px;
+        color: white;
+        background: rgb(153, 249, 153);
+        border-radius: 4px;
+        width: 36px;
+        height: 36px;
+        border-radius: 18px;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 1s ease-in; 
+    }
+    .arrow {
+        position: relative;
+        top: 14.5px;
+        left: 13px;
+        transform: rotate(-45deg);
+        width: 10px;
+        height: 5px;
+        border-left: 1px solid white;
+        border-bottom: 1px solid white;
+           
+    }
+    .successfullyAdded {
+        opacity: 1;
+        transition: opacity 1s ease-in;
     }
 </style>

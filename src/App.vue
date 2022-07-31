@@ -27,7 +27,10 @@ export default {
 </script>
 
 
-<style scoped lang="scss">
+<style lang="scss">
+body {
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -39,6 +42,7 @@ export default {
   flex-direction: row;
   // width: 100%;
   padding-bottom: 80px;
+  padding-right:32px;
 }
 
 // #productList {
