@@ -61,6 +61,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('http://fonts.cdnfonts.com/css/source-sans-pro');
 
 #productList__container {
   box-sizing: border-box;
@@ -121,7 +122,7 @@ export default {
 }
 
 #singleProduct__naming {
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -133,7 +134,7 @@ export default {
 }
 
 #singleProduct__description {
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -150,7 +151,7 @@ export default {
 #singleProduct__price {
   position: absolute;
   top: 338px;
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -178,7 +179,7 @@ export default {
     position: relative;
     top: 10px;
     left: -16px;
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans Pro', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -208,7 +209,7 @@ export default {
     width: 121.49px;
     height: 20px;
     border-top: 1px solid #B4B4B4;
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans Pro', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;

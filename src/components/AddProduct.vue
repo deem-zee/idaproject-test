@@ -134,6 +134,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('http://fonts.cdnfonts.com/css/source-sans-pro');
+
 #addProduct__container {
     background:  rgba(255, 254, 251, 0.8);
     border-radius: 4px;
@@ -142,7 +144,7 @@ export default {
     
 }
 #addProduct__container__header {
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans Pro', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 28px;
@@ -163,7 +165,7 @@ export default {
 }
 
     label {
-        font-family: 'Source Sans Pro';
+        font-family: 'Source Sans Pro', sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 10px;
@@ -204,7 +206,7 @@ export default {
         background: #FFFEFB;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         border-radius: 4px;
-        font-family: 'Source Sans Pro';
+        font-family: 'Source Sans Pro', sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 12px;
@@ -228,7 +230,7 @@ export default {
         background: #FFFEFB;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         border-radius: 4px;
-        font-family: 'Source Sans Pro';
+        font-family: 'Source Sans Pro', sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 12px;
@@ -286,7 +288,7 @@ export default {
         border: 1px solid rgb(153, 249, 153);
     }
     .errmsg {
-        font-family: 'Source Sans Pro';
+        font-family: 'Source Sans Pro', sans-serif;
         position: absolute;
         // visibility: visible;
         font-style: normal;
