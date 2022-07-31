@@ -1,31 +1,72 @@
-export <template>
+<template>
   <div id="addProduct__container">
     <p id="addProduct__container__header">Добавление товара</p>
     <form id="addProduct__container__form">
         <label for="productName">Наименование товара</label>
-        <div  class="requiredCircle"></div>
-        <input type="text" 
-        v-model="product.naming" 
-        :class="{valid:validNaming, error:!validNaming}"
-        name="productName"
-        id="productName" 
-        placeholder="Введите наименование товара" required>
-        <p :class="{errmsg:!validNaming, noErr:validNaming}">обязательное поле</p>
+        <div  class="requiredCircle" />
+        <input
+            type="text"
+            v-model="product.naming"
+            :class="{valid:validNaming, error:!validNaming}"
+            name="productName" id="productName"
+            placeholder="Введите наименование товара" required
+        />
+        <p 
+            :class="{errmsg:!validNaming, noErr:validNaming}" 
+            value="обязательное поле"
+        />
         <label for="productDescription">Описание товара</label>
-        <textarea v-model="product.description" name="productDescription" id="productDescription" 
-        placeholder="Введите описание товара" cols="30" rows="10"></textarea>
+        <textarea 
+            v-model="product.description"
+            name="productDescription"
+            id="productDescription"
+            placeholder="Введите описание товара"
+            cols="30"
+            rows="10"
+        />
         <label for="productImageLink">Ссылка на изображение товара</label>
-        <div  class="requiredCircle"></div>
-        <input type="text" v-model="product.link" :class="{valid:validLink, error:!validLink}" name="productImageLink"
-         id="productImageLink" placeholder="Введите ссылку" required>
-        <p :class="{errmsg:!validLink, noErr:validLink}">обязательное поле</p>
+        <div class="requiredCircle" />
+        <input
+            type="text"
+            v-model="product.link"
+            :class="{valid:validLink, error:!validLink}"
+            name="productImageLink"
+            id="productImageLink"
+            placeholder="Введите ссылку"
+            required
+        />
+        <p 
+            :class="{errmsg:!validLink, noErr:validLink}"
+            value="обязательное поле"
+        />
         <label for="productPrice">Цена товара</label>
-        <div class="requiredCircle"></div>
-        <input type="text" v-model="product.price" @keyup="mask" :class="{valid:validPrice, error:!validPrice}" name="productPrice"
-         id="productPrice" placeholder="Введите цену" required>
-        <p :class="{errmsg:!validPrice, noErr:validPrice}">обязательное поле</p>
-        <button id="addProduct__container__submit"  @click.prevent="addProduct(product)"  :disabled="validate === false">Добавить товар</button>
-        <div class="success" :class="{successfullyAdded: succeed}"><div class="arrow"></div></div>
+        <div class="requiredCircle" />
+        <input
+            type="text"
+            v-model="product.price"
+            @keyup="mask"
+            :class="{valid:validPrice, error:!validPrice}"
+            name="productPrice"
+            id="productPrice"
+            placeholder="Введите цену"
+            required
+        />
+        <p 
+            :class="{errmsg:!validPrice, noErr:validPrice}"
+            value="обязательное поле"
+        />
+        <button
+            id="addProduct__container__submit"
+            @click.prevent="addProduct(product)"
+            :disabled="validate === false"
+            value="Добавить товар"
+        />
+        <div
+            class="success"
+            :class="{successfullyAdded: succeed}"
+        >
+            <div class="arrow" />
+        </div>
     </form> 
   </div>
 </template>
@@ -53,19 +94,16 @@ export default {
     computed: {
         ...mapGetters(['getProducts']),
         validate() {
-            return (this.product.naming && this.product.link && !isNaN(Number(this.product.price))) ? true :  false;
+            return (this.product.naming && this.product.link && !isNaN(Number(this.product.price)))
         },
         validNaming() {
-            return (this.product.naming === null || this.product.naming.trim() === '') ? 
-            false : true;
+            return !(this.product.naming === null || this.product.naming.trim() === '')
         },
         validLink() {
-            return (this.product.link === null || this.product.link.trim() === '') ? 
-            false : true;
+            return !(this.product.link === null || this.product.link.trim() === '')
         },
         validPrice() {
-            return (this.product.price === null || (this.product.price.trim()) === '' || isNaN(Number(this.product.price)) ) ?
-            false : true;
+            return !(this.product.price === null || (this.product.price.trim()) === '' || isNaN(Number(this.product.price)) )
         }
         
     },
@@ -97,7 +135,7 @@ export default {
 
 <style lang="scss" scoped>
 #addProduct__container {
-    background:  #E5E5E5;
+    background:  rgba(255, 254, 251, 0.8);
     border-radius: 4px;
     margin-left: 32px;
     
@@ -118,7 +156,7 @@ export default {
     width: 332px;
     height: 440px;
     background: #FFFEFB;
-    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
     border-radius: 4px;
     padding-top: 8px;
 
@@ -164,7 +202,7 @@ export default {
         box-sizing: border-box;
         width: 284px;
         background: #FFFEFB;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         border-radius: 4px;
         font-family: 'Source Sans Pro';
         font-style: normal;
@@ -188,7 +226,7 @@ export default {
         resize: none;
         border: none;
         background: #FFFEFB;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         border-radius: 4px;
         font-family: 'Source Sans Pro';
         font-style: normal;

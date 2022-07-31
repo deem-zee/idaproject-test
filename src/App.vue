@@ -38,10 +38,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background:  #E5E5E5;
+  background:  rgba(255, 254, 251, 0.8);;
   display: flex;
   flex-direction: row;
   padding-bottom: 80px;
+}
+
+.toTop {
+  display: none;
 }
 
 @media screen and (min-width: 1440px) {
@@ -53,9 +57,7 @@ body {
 .prodList {
   margin-left: 364px;
 }
-.toTop {
-  display: none;
-}
+
 }
 
 @media screen and (min-width: 380px) and (max-width: 480px){

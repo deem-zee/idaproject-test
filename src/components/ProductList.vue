@@ -8,7 +8,9 @@
     <div id="productList" v-for="product in data" 
       :key="product.id" :class="{deleted:product.deleted }">
         <button id="delete"  @click="deleteProductFromList(product)" ></button>
-        <div id="singleProduct__img"   :style="{ backgroundImage: 'url(' + product.link + ')' }"></div>
+        <div 
+          id="singleProduct__img" 
+          :style="{ backgroundImage: 'url(' + product.link + ')' }" />
         <p id="singleProduct__naming">{{product.naming}}</p>
         <p id="singleProduct__description">{{product.description}}</p>
         <p id="singleProduct__price">{{product.price}} руб.</p>   
@@ -163,14 +165,14 @@ export default {
   position: absolute;
   width: 121.49px;
   height: 36px;
-  left: 922.5px;
+  left: 867px;
   top: -52px;
   background: #FFFEFB;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   margin: 0;
   list-style: none;
-  padding: 0;
+  padding-right: 16px;
   
   .sortProductLabel {
     position: relative;
