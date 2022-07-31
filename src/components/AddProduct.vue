@@ -4,16 +4,27 @@ export <template>
     <form id="addProduct__container__form">
         <label for="productName">Наименование товара</label>
         <div  class="requiredCircle"></div>
-        <input type="text" v-model="product.naming" name="productName" id="productName" placeholder="Введите наименование товара" required>
+        <input type="text" 
+        v-model="product.naming" 
+        :class="{valid:validNaming, error:!validNaming}"
+        name="productName"
+        id="productName" 
+        placeholder="Введите наименование товара" required>
+        <p :class="{errmsg:!validNaming, noErr:validNaming}">обязательное поле</p>
         <label for="productDescription">Описание товара</label>
-        <textarea v-model="product.description" name="productDescription" id="productDescription" placeholder="Введите описание товара" cols="30" rows="10"></textarea>
+        <textarea v-model="product.description" name="productDescription" id="productDescription" 
+        placeholder="Введите описание товара" cols="30" rows="10"></textarea>
         <label for="productImageLink">Ссылка на изображение товара</label>
         <div  class="requiredCircle"></div>
-        <input type="textarea" v-model="product.link" name="productImageLink" id="productImageLink" placeholder="Введите ссылку" required>
+        <input type="text" v-model="product.link" :class="{valid:validLink, error:!validLink}" name="productImageLink"
+         id="productImageLink" placeholder="Введите ссылку" required>
+        <p :class="{errmsg:!validLink, noErr:validLink}">обязательное поле</p>
         <label for="productPrice">Цена товара</label>
         <div class="requiredCircle"></div>
-        <input type="text" v-model="product.price" @keyup="mask" name="productPrice" id="productPrice" placeholder="Введите цену" required>
-        <button id="addProduct__container__submit"  @click.prevent="addProduct(product)" :disabled="validate == false">Добавить товар</button>
+        <input type="text" v-model="product.price" @keyup="mask" :class="{valid:validPrice, error:!validPrice}" name="productPrice"
+         id="productPrice" placeholder="Введите цену" required>
+        <p :class="{errmsg:!validPrice, noErr:validPrice}">обязательное поле</p>
+        <button id="addProduct__container__submit"  @click.prevent="addProduct(product)"  :disabled="validate === false">Добавить товар</button>
         <div class="success" :class="{successfullyAdded: succeed}"><div class="arrow"></div></div>
     </form> 
   </div>
@@ -30,40 +41,56 @@ export default {
                 description: null,
                 link: null,
                 price: null,
-                id: null
+                id: null,
+                deleted: false,
             },
             succeed: false,
-            
+            inputPrice: true,
+            inputLink: true,
+            inputName: true,
         }
     },
     computed: {
         ...mapGetters(['getProducts']),
         validate() {
-            return (this.product.naming && this.product.link && this.product.price) ? true :  false;
+            return (this.product.naming && this.product.link && !isNaN(Number(this.product.price))) ? true :  false;
+        },
+        validNaming() {
+            return (this.product.naming === null || this.product.naming.trim() === '') ? 
+            false : true;
+        },
+        validLink() {
+            return (this.product.link === null || this.product.link.trim() === '') ? 
+            false : true;
+        },
+        validPrice() {
+            return (this.product.price === null || (this.product.price.trim()) === '' || isNaN(Number(this.product.price)) ) ?
+            false : true;
         }
+        
     },
     methods: {
-
         addProduct(product) {
-           this.$store.dispatch('addNewProduct', product);
-           this.product = {
+            this.$store.dispatch('addNewProduct', product);
+            this.product = {
                 naming: null,
                 description: null,
                 link: null,
                 price: null,
-                id: null
-           }
+                id: null,
+                deleted: false
+            }
             this.succeed = true;
             setTimeout(() => {
                 this.succeed = false;
-            }, 3000)
+            }, 1000)
 
         },
         mask(e) {
             (this.product.price.indexOf('.') === -1 && e.which == 32) ?
                 this.product.price = this.product.price.trim() + '.' 
                 : this.product.price;  
-        }
+            },
     }
 }
 </script>
@@ -71,9 +98,9 @@ export default {
 <style lang="scss" scoped>
 #addProduct__container {
     background:  #E5E5E5;
-    // box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
     border-radius: 4px;
     margin-left: 32px;
+    
     
 }
 #addProduct__container__header {
@@ -178,9 +205,7 @@ export default {
         border-radius: 10px;
         border: none;
         margin: 24px;
-        &:active {
-            background: rgb(116, 245, 116);
-        }
+        
     }
 
     .success {
@@ -212,4 +237,42 @@ export default {
         opacity: 1;
         transition: opacity 1s ease-in;
     }
+    .error {
+        border: 1px solid rgb(255, 121, 121);
+        &:after {
+            content: "это поле обязательно"
+        }
+    }
+
+    .valid {
+        border: 1px solid rgb(153, 249, 153);
+    }
+    .errmsg {
+        font-family: 'Source Sans Pro';
+        position: absolute;
+        // visibility: visible;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+        color: rgb(255, 121, 121);
+        text-align: left;
+        padding-left: 32px;
+        &:nth-of-type(1) {
+            
+            top: 160px;
+            
+        }
+        &:nth-of-type(2) {
+            position: absolute;
+            top: 380px;
+        }
+        &:nth-of-type(3) {
+            position: absolute;
+            top: 450px;
+        }
+    }
+    .noErr {
+        display: none;
+    }
+
 </style>

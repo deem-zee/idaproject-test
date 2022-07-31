@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <add-product></add-product>
+    <add-product class="addProd"></add-product>
     <!-- <product-sort></product-sort> -->
-    <product-list id="productList"></product-list>
+    <product-list class="prodList"></product-list>
+    <a class="toTop" href="#">&#8593;</a>
   </div>
 </template>
 
@@ -29,7 +30,7 @@ export default {
 
 <style lang="scss">
 body {
-  margin: 0;
+  margin: 0 auto;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -40,14 +41,41 @@ body {
   background:  #E5E5E5;
   display: flex;
   flex-direction: row;
-  // width: 100%;
   padding-bottom: 80px;
-  padding-right:32px;
 }
 
-// #productList {
-//   display: flex;
-// }
+@media screen and (min-width: 1440px) {
+  .addProd {
+  position: fixed;
+  z-index: 1;
+}
+
+.prodList {
+  margin-left: 364px;
+}
+.toTop {
+  display: none;
+}
+}
+
+@media screen and (min-width: 380px) and (max-width: 480px){
+  #app {
+    flex-wrap: wrap;
+  }
+  .prodList {
+    margin-left: 16px;
+  }
+  .toTop {
+    position: fixed;
+    top: 860px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background: rgb(153, 249, 153);
+    
+  }
+}
+
 
 
 </style>
