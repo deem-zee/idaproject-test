@@ -5,12 +5,16 @@
         <li @click="sortDescend">По убыванию цены</li>
         <li @click="sortByName">По названию</li>
       </ul>
-    <div id="productList" v-for="product in data" 
-      :key="product.id" :class="{deleted:product.deleted }">
-        <button id="delete"  @click="deleteProductFromList(product)" ></button>
+    <div 
+      id="productList"
+      v-for="product in data" 
+      :key="product.id"
+      :class="{deleted:product.deleted }">
+        <button id="delete" @click="deleteProductFromList(product)" />
         <div 
           id="singleProduct__img" 
-          :style="{ backgroundImage: 'url(' + product.link + ')' }" />
+          :style="{ backgroundImage: 'url(' + product.link + ')' }" 
+        />
         <p id="singleProduct__naming">{{product.naming}}</p>
         <p id="singleProduct__description">{{product.description}}</p>
         <p id="singleProduct__price">{{product.price}} руб.</p>   

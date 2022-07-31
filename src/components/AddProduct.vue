@@ -59,12 +59,11 @@
             id="addProduct__container__submit"
             @click.prevent="addProduct(product)"
             :disabled="validate === false"
-            value="Добавить товар"
-        />
+           >Добавить товар
+        </button>
         <div
             class="success"
-            :class="{successfullyAdded: succeed}"
-        >
+            :class="{successfullyAdded: succeed}">
             <div class="arrow" />
         </div>
     </form> 
@@ -135,6 +134,7 @@ export default {
 
 <style lang="scss" scoped>
 @import url('http://fonts.cdnfonts.com/css/source-sans-pro');
+@import url('https://rsms.me/inter/inter.css');
 
 #addProduct__container {
     background:  rgba(255, 254, 251, 0.8);
@@ -239,6 +239,19 @@ export default {
        
     }
     #addProduct__container__submit {
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        /* identical to box height */
+
+        text-align: center;
+        letter-spacing: -0.02em;
+
+        /* Greys / 500 */
+
+        color: #B4B4B4;
         width: 284px;
         height: 36px;
         background: #EEEEEE;
