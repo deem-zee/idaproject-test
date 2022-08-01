@@ -10,7 +10,6 @@
 <script>
 import  AddProduct  from './components/AddProduct.vue'
 import ProductList from './components/ProductList.vue'
-// import ProductSort from './components/ProductSort.vue'
 // eslint-disable-next-line no-unused-vars
 import store from './store/index';
 
@@ -19,7 +18,6 @@ export default {
   components: {
     'add-product': AddProduct,
     'product-list':ProductList,
-    // 'product-sort': ProductSort,
   },
   beforeCreate() {
 		this.$store.commit('initialiseStore');
@@ -30,54 +28,33 @@ export default {
 
 <style lang="scss">
 @import url('http://fonts.cdnfonts.com/css/source-sans-pro');
-body {
-  margin: 0 auto;
-}
-#app {
-  font-family: 'Source Sans Pro', Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background:  rgba(255, 254, 251, 0.8);;
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 80px;
-}
-
-.toTop {
-  display: none;
-}
-
 @media screen and (min-width: 1440px) {
-  .addProd {
-  position: fixed;
-  z-index: 1;
-}
-
-.prodList {
-  margin-left: 364px;
-}
-
-}
-
-@media screen and (min-width: 380px) and (max-width: 480px){
+  body {
+    // display: flex;
+    // justify-content: center;
+    margin: 0 auto;
+  }
   #app {
+    font-family: 'Source Sans Pro', Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    background:  rgba(255, 254, 251, 0.8);
+    // box-sizing: border-box;
+    min-width: 1440px;
+    max-width: 1440px;
+    padding: 32px;
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
   }
-  .prodList {
-    margin-left: 16px;
-  }
   .toTop {
-    position: fixed;
-    top: 860px;
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    background: rgb(153, 249, 153);
-    
+    display: none;
   }
 }
+
+
 
 
 
