@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <add-product class="addProd"></add-product>
-    <!-- <product-sort></product-sort> -->
     <product-list class="prodList"></product-list>
     <a class="toTop" href="#">&#8593;</a>
   </div>
@@ -30,8 +29,6 @@ export default {
 @import url('http://fonts.cdnfonts.com/css/source-sans-pro');
 @media screen and (min-width: 1440px) {
   body {
-    // display: flex;
-    // justify-content: center;
     margin: 0 auto;
   }
   #app {

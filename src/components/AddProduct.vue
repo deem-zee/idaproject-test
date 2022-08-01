@@ -15,9 +15,9 @@
             placeholder="Введите наименование товара" required
         />
         <p 
-            :class="{errmsg:!validNaming, noErr:validNaming}" 
-            value="обязательное поле"
-        />
+           :class="{errmsg:!validPrice, noErr:validPrice}"
+        >Обязательное поле  
+        </p>
         <div class="labelContainer">
           <label for="productDescription">Описание товара</label>
         </div>
@@ -44,9 +44,9 @@
             required
         />
         <p 
-            :class="{errmsg:!validLink, noErr:validLink}"
-            value="обязательное поле"
-        />
+           :class="{errmsg:!validPrice, noErr:validPrice}"
+        >Обязательное поле  
+        </p>
         <div class="labelContainer">
             <label for="productPrice">Цена товара</label>
             <div class="requiredCircle" />
@@ -62,15 +62,18 @@
             placeholder="Введите цену"
             required
         />
-        <p 
-            :class="{errmsg:!validPrice, noErr:validPrice}"
-            class="errmsg"
-            value="обязательное поле"
-        />
+        <div class="errorArea">
+          <p 
+           :class="{errmsg:!validPrice, noErr:validPrice}"
+          >Обязательное поле  
+        </p>
+        </div>
+        
         <button
             id="addProduct__container__submit"
             @click.prevent="addProduct(product)"
-            :disabled="validate === false"
+            :disabled="(validate === false)"
+            :class="{validChecked: validate}"
            >Добавить товар
         </button>
         <div
@@ -104,7 +107,7 @@ export default {
     computed: {
 
         validate() {
-            return (this.product.naming && this.product.link && !isNaN(Number(this.product.price)))
+            return (this.product.naming && this.product.link && !isNaN(Number(this.product.price)) && Number(this.product.price) !== 0 ) ? true : false;
             
         },
         validNaming() {
@@ -216,7 +219,6 @@ input, button {
 input, textarea {
   padding-top: 10px;
   padding-left: 16px;
-  margin-bottom: 16px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -250,14 +252,9 @@ button {
   border: 1px solid rgb(153, 249, 153);
 }
 .noErr {
-  display: none;
+  visibility: hidden;
 }
-.error {
-  border: 1px solid rgb(255, 121, 121);
-  &:after {
-    content: "это поле обязательно"
-  }
-}
+
 .errmsg {
   font-family: 'Source Sans Pro', sans-serif;
   font-style: normal;
@@ -268,11 +265,55 @@ button {
   margin-bottom: 2px;
   line-height: 10px;
   letter-spacing: -0.02em;
+  text-align:left;
 }
 .successfullyAdded {
   opacity: 1;
   transition: opacity 1s ease-in;
 }
+.errorArea {
+  margin-top: 4px;
+  height:16px;
+  position: relative;
+  margin-bottom: 2px;
+  p {
+    position: absolute;
+    top: 4px;
+  }
+}
+    .success {
+        position: relative;
+        left: 320px;
+        top: -35px;
+        color: white;
+        background: rgb(153, 249, 153);
+        border-radius: 4px;
+        width: 36px;
+        height: 36px;
+        border-radius: 18px;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 1s ease-in; 
+    }
+    .arrow {
+        position: relative;
+        top: 14.5px;
+        left: 13px;
+        transform: rotate(-45deg);
+        width: 10px;
+        height: 5px;
+        border-left: 1px solid white;
+        border-bottom: 1px solid white;
+           
+    }
+    .successfullyAdded {
+        opacity: 1;
+        transition: opacity 1s ease-in;
+    }
+  .validChecked {
+    background: rgb(153, 249, 153);
+    color: white;
+  }
 }
 
 
