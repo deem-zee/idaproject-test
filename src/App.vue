@@ -38,7 +38,7 @@ export default {
     text-align: center;
     color: #2c3e50;
     background:  rgba(255, 254, 251, 0.8);
-    // box-sizing: border-box;
+    box-sizing: border-box;
     min-width: 1440px;
     max-width: 1440px;
     padding: 32px;

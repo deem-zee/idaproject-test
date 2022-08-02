@@ -9,13 +9,14 @@
         
         <input
             type="text"
+            autocomplete="off"
             v-model="product.naming"
             :class="{valid:validNaming, error:!validNaming}"
             name="productName" id="productName"
             placeholder="Введите наименование товара" required
         />
         <p 
-           :class="{errmsg:!validPrice, noErr:validPrice}"
+           :class="{errmsg:!validNaming, noErr:validNaming}"
         >Обязательное поле  
         </p>
         <div class="labelContainer">
@@ -23,6 +24,7 @@
         </div>
         <textarea 
             v-model="product.description"
+            autocomplete="off"
             name="productDescription"
             id="productDescription"
             placeholder="Введите описание товара"
@@ -36,6 +38,7 @@
         
         <input
             type="text"
+            autocomplete="off"
             v-model="product.link"
             :class="{valid:validLink, error:!validLink}"
             name="productImageLink"
@@ -44,7 +47,7 @@
             required
         />
         <p 
-           :class="{errmsg:!validPrice, noErr:validPrice}"
+           :class="{errmsg:!validLink, noErr:validLink}"
         >Обязательное поле  
         </p>
         <div class="labelContainer">
@@ -54,6 +57,7 @@
         
         <input
             type="text"
+            autocomplete="off"
             v-model="product.price"
             @keyup="mask"
             :class="{valid:validPrice, error:!validPrice}"
@@ -96,7 +100,6 @@ export default {
                 link: null,
                 price: null,
                 id: null,
-                deleted: false,
             },
             succeed: false,
             inputPrice: true,
@@ -107,7 +110,7 @@ export default {
     computed: {
 
         validate() {
-            return (this.product.naming && this.product.link && !isNaN(Number(this.product.price)) && Number(this.product.price) !== 0 ) ? true : false;
+          return (!isNaN(Number(this.product.price)) && Number(this.product.price) !== 0 && this.product.naming && this.product.link ) ? true : false;
             
         },
         validNaming() {
@@ -130,7 +133,6 @@ export default {
                 link: null,
                 price: null,
                 id: null,
-                deleted: false
             }
             this.succeed = true;
             setTimeout(() => {
@@ -148,8 +150,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('http://fonts.cdnfonts.com/css/source-sans-pro');
-@import url('https://rsms.me/inter/inter.css');
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/source-sans-pro-v21-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../assets/fonts/source-sans-pro-v21-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/source-sans-pro-v21-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/source-sans-pro-v21-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/source-sans-pro-v21-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/source-sans-pro-v21-latin-regular.svg#SourceSansPro') format('svg'); /* Legacy iOS */
+}
+@font-face {
+   @font-face {
+    font-family: 'Inter Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Inter Medium'), url('../assets/fonts/Inter-Medium.woff') format('woff');
+    }
+}
 
 @media screen and (min-width: 1440px) {
   #addProduct__container {
@@ -171,6 +191,8 @@ export default {
 }
 
 #addProduct__container__form {
+  position: sticky;
+  top: 83px;
   box-sizing: border-box;
   width: 332px;
   padding: 24px;
@@ -232,12 +254,12 @@ textarea {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   border: none;
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  color: #B4B4B4;
+  color: #3F3F3F;
   resize: none;
 }
 
@@ -247,12 +269,22 @@ button {
   border: none;
   padding: 0;
   margin-top: 8px;
+  font-family: 'Inter Medium', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #B4B4B4
 }
 .valid {
-  border: 1px solid rgb(153, 249, 153);
+  border: 1px solid #7BAE73;
 }
 .noErr {
   visibility: hidden;
+  margin: 0;
+  height:16px;
 }
 
 .errmsg {
@@ -281,39 +313,43 @@ button {
     top: 4px;
   }
 }
-    .success {
-        position: relative;
-        left: 320px;
-        top: -35px;
-        color: white;
-        background: rgb(153, 249, 153);
-        border-radius: 4px;
-        width: 36px;
-        height: 36px;
-        border-radius: 18px;
-        z-index: 1;
-        opacity: 0;
-        transition: opacity 1s ease-in; 
-    }
-    .arrow {
-        position: relative;
-        top: 14.5px;
-        left: 13px;
-        transform: rotate(-45deg);
-        width: 10px;
-        height: 5px;
-        border-left: 1px solid white;
-        border-bottom: 1px solid white;
-           
-    }
-    .successfullyAdded {
-        opacity: 1;
-        transition: opacity 1s ease-in;
-    }
-  .validChecked {
-    background: rgb(153, 249, 153);
-    color: white;
+.success {
+  position: absolute;
+  // left: 360px;
+  top: 385px;
+  color: white;
+  background: #7BAE73;
+  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s ease-in; 
+  z-index: 1; 
+}
+.arrow {
+  position: relative;
+  top: 14.5px;
+  left: 13px;
+  transform: rotate(-45deg);
+  width: 10px;
+  height: 5px;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+     
+}
+.successfullyAdded {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+.validChecked {
+  background: #7BAE73;
+  color: white;
+  &:hover {
+    cursor: pointer;
   }
+}
 }
 
 
