@@ -143,6 +143,9 @@ export default {
   text-align: left;
   margin-top: 16px;
   margin-left: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #singleProduct__description {
   font-family: 'Source Sans Pro', sans-serif;
@@ -156,6 +159,8 @@ export default {
   margin-left: 16px;
   margin-right: 16px;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   max-height: 80px;
 }
 #singleProduct__price {
@@ -265,6 +270,9 @@ select {
   text-align: left;
   margin-top: 16px;
   margin-left: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #singleProduct__description {
   font-family: 'Source Sans Pro', sans-serif;
@@ -278,6 +286,9 @@ select {
   margin-left: 16px;
   margin-right: 16px;
   overflow: hidden;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   max-height: 80px;
 }
 #singleProduct__price {

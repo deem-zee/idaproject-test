@@ -37,7 +37,7 @@ export default {
 @import url('http://fonts.cdnfonts.com/css/source-sans-pro');
 @media screen and (min-width: 1440px) {
   body {
-    margin: 0 auto;
+    // margin: 0 auto;
   }
   #app {
     font-family: 'Source Sans Pro', Avenir, Helvetica, Arial, sans-serif;
@@ -49,6 +49,7 @@ export default {
     box-sizing: border-box;
     width: 1440px;
     padding: 32px;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -58,7 +59,7 @@ export default {
 
 @media screen and (min-width: 380px) and (max-width: 1280px) {
   body {
-    margin: 0 auto;
+    // margin: 0 auto;
   }
   #app {
     font-family: 'Source Sans Pro', Avenir, Helvetica, Arial, sans-serif;
