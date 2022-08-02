@@ -182,8 +182,7 @@ select {
   top: 60%;
   left: 50%;
   width: 121.49px;
-  min-height: 36px;
-  height: fit-content;
+  height: 36px;
   transform: translate(-50%, -50%);
   z-index: 1;
   background: #FFFEFB;
@@ -308,8 +307,7 @@ select {
 select {
   position: absolute;
   width: 121.49px;
-  min-height: 36px;
-  height: fit-content;
+  height: 36px;
   left: 1287px;
   top: 31px;
   background: #FFFEFB;
