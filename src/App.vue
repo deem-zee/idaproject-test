@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div :class="{preloader: preloader}"></div>
     <add-product class="addProd"></add-product>
     <product-list class="prodList"></product-list>
   </div>
@@ -17,9 +18,17 @@ export default {
     'add-product': AddProduct,
     'product-list':ProductList,
   },
+  data() {
+    return {
+      preloader: true,
+    }
+  },
   beforeCreate() {
 		this.$store.commit('initialiseStore');
-	}
+    setTimeout(() => {
+        this.preloader = false;
+      }, 1000)
+	},
 }
 </script>
 
@@ -69,7 +78,18 @@ export default {
 
 }
 
-
+.preloader {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   z-index: 9999;
+   background-image: url('./assets/preloader.gif');
+   background-repeat: no-repeat; 
+   background-color: #FFF;
+   background-position: center;
+}
 
 
 
