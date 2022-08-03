@@ -46,7 +46,7 @@
             placeholder="Введите ссылку"
             required
         />
-        <p 
+        <p
            :class="{errmsg:!validLink, noErr:validLink}"
         >Обязательное поле  
         </p>
@@ -184,8 +184,8 @@ export default {
 
 @media screen and (min-width: 380px) and (max-width: 1280px) {
   #addProduct__container {
-    position: sticky;
-    top: 0;
+    // position: sticky;
+    // top: 0;
     box-sizing: border-box;
     width: 332px;
     z-index: 1;
@@ -330,7 +330,6 @@ button {
   top: 445px;
   color: white;
   background: #7BAE73;
-  border-radius: 4px;
   width: 36px;
   height: 36px;
   border-radius: 18px;
@@ -511,7 +510,6 @@ button {
   top: 385px;
   color: white;
   background: #7BAE73;
-  border-radius: 4px;
   width: 36px;
   height: 36px;
   border-radius: 18px;

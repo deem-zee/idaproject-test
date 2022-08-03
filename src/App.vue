@@ -3,6 +3,7 @@
     <div :class="{preloader: preloader}"></div>
     <add-product class="addProd"></add-product>
     <product-list class="prodList"></product-list>
+    <a href="#" class="toTop"><div></div></a>
   </div>
 </template>
 
@@ -36,9 +37,6 @@ export default {
 <style lang="scss">
 
 @media screen and (min-width: 1440px) {
-  body {
-    // margin: 0 auto;
-  }
   #app {
     font-family: 'Source Sans Pro', Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -58,9 +56,6 @@ export default {
 }
 
 @media screen and (min-width: 380px) and (max-width: 1280px) {
-  body {
-    // margin: 0 auto;
-  }
   #app {
     font-family: 'Source Sans Pro', Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -75,6 +70,32 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     margin: 0 auto;
+  }
+  .toTop {
+    position: fixed;
+    top: 530px;
+    left: 0;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    color: white;
+    border-radius: 18px;
+    background: #7BAE73;
+    opacity: 0.5;
+    
+    
+    div{
+      width: 5px;
+      height: 5px;
+      border: 1px solid white;
+      border-right: none;
+      border-top: none;
+      margin: 50% 50%;
+      transform: rotate(135deg) translate(2.5px, 2.5px);
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
 
 }

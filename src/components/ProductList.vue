@@ -96,6 +96,7 @@ export default {
   box-sizing: border-box;
   width: 380px;
   margin-top: 83px;
+  
 }
 .transition {
   display: flex;
@@ -191,10 +192,10 @@ export default {
 }
 
 select {
-  position: sticky;
-  top: 60%;
-  left: 50%;
-  width: 121.49px;
+  position: relative;
+  top: -1%;
+  left: 20%;
+  width: fit-content;
   height: 36px;
   transform: translate(-50%, -50%);
   z-index: 1;
@@ -219,7 +220,10 @@ select {
 #productList__container {
   box-sizing: border-box;
   width: 1044px;
-  margin-top: 83px;
+  // margin-top: 83px;
+  margin-top: 31px;
+  display: flex;
+  flex-direction: column;
 }
 .transition {
   display: flex;
@@ -318,11 +322,10 @@ select {
 }
 
 select {
-  position: absolute;
-  width: 121.49px;
+  width: fit-content;
   height: 36px;
-  left: 1287px;
-  top: 31px;
+  margin-bottom: 16px;
+  align-self: flex-end;
   background: #FFFEFB;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
