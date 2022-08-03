@@ -326,7 +326,7 @@ select {
   background: #FFFEFB;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
