@@ -78,6 +78,19 @@ export default {
        url('../assets/fonts/source-sans-pro-v21-latin-regular.svg#SourceSansPro') format('svg'); /* Legacy iOS */
 }
 
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/source-sans-pro-v21-latin-600.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../assets/fonts/source-sans-pro-v21-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/source-sans-pro-v21-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/source-sans-pro-v21-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/source-sans-pro-v21-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/source-sans-pro-v21-latin-600.svg#SourceSansPro') format('svg'); /* Legacy iOS */
+}
+
 @media screen and (min-width: 380px) and (max-width: 1280px) {
   #productList__container {
   box-sizing: border-box;
@@ -188,7 +201,7 @@ select {
   background: #FFFEFB;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;

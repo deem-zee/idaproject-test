@@ -163,12 +163,10 @@ export default {
        url('../assets/fonts/source-sans-pro-v21-latin-regular.svg#SourceSansPro') format('svg'); /* Legacy iOS */
 }
 @font-face {
-   @font-face {
     font-family: 'Inter Medium';
     font-style: normal;
     font-weight: normal;
     src: local('Inter Medium'), url('../assets/fonts/Inter-Medium.woff') format('woff');
-    }
 }
 
 @media screen and (min-width: 380px) and (max-width: 1280px) {

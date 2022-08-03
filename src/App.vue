@@ -34,7 +34,26 @@ export default {
 
 
 <style lang="scss">
-@import url('http://fonts.cdnfonts.com/css/source-sans-pro');
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./assets/fonts/source-sans-pro-v21-latin-600.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('./assets/fonts/source-sans-pro-v21-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./assets/fonts/source-sans-pro-v21-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./assets/fonts/source-sans-pro-v21-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('./assets/fonts/source-sans-pro-v21-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('./assets/fonts/source-sans-pro-v21-latin-600.svg#SourceSansPro') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+    font-family: 'Inter Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Inter Medium'), url('./assets/fonts/Inter-Medium.woff') format('woff');
+}
+
 @media screen and (min-width: 1440px) {
   body {
     // margin: 0 auto;
